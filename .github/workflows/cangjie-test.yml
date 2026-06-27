@@ -8,18 +8,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: wolish/code-server-dev-cangjie:1.0.0
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check Cangjie environment
+      - name: Show project files
         run: |
-          cjc -v
-          cjpm --version || true
+          pwd
+          ls -la
+          find . -maxdepth 4 -type f
 
       - name: Run Cangjie unit tests
         run: |
-          cjpm test
+          docker run --rm -v "$PWD":/workspace -w /workspace zxilly/cangjie:1.0.5 cjpm test
