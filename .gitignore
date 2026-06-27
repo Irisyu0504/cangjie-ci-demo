@@ -1,0 +1,8 @@
+opencode_skill/
+.opencode/
+references/
+.cache/
+.vscode/
+jgrapht/
+.claude/
+gitcode_mcp.log
